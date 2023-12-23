@@ -11,11 +11,36 @@ int intCheck(int integer) {
     return integer;
 }
 
+void spaces(int symbols) {
+    for (int i = 0; i < (symbols); i++) {
+        std::cout << " ";
+    }
+}
+
+void stars(int symbols, char symbol) {
+    for (int i = 0; i < symbols*2-1; i++) {
+        std::cout << symbol;
+    }
+}
+
 int main()
 {
+    setlocale(LC_ALL, "RU");
     std::cout << "Введите количетсво пирамидок: " << std::endl;
-    unsigned int n = 0;
-    n = intCheck(n);
-
+    unsigned int pyramides = 0;
+    std::cin >> pyramides;
+    pyramides = intCheck(pyramides);
+    pyramides++;
+    std::cout << "Введите символ для заполнения: " << std::endl;
+    char symbol{ '*' };
+    std::cin >> symbol;
+    for (int i = 0; i < pyramides; i++) {
+        for (int j = 0; j < pyramides-1; j++) {
+            spaces(pyramides - i);
+            stars(i, symbol);
+            spaces(pyramides - i);
+        }
+        std::cout << std::endl;
+    }
     return 0;
 }
